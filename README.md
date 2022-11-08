@@ -2,7 +2,7 @@
 
 A [NeosModLoader](https://github.com/zkxs/NeosModLoader) mod for [Neos VR](https://neos.com/) that shows the userspace spawn button on any item regardless of if its a facet.
 
-remember that anything you spawn in your space can touch you anything you can. to list some things you can touch in userspace desktop, files system, crypto. be carful!
+remember that anything you spawn in your userspace can touch you anything you can. to list some things you can touch in userspace: desktop, file system, crypto. be carful!
 
 ## Installation
 1. Install [NeosModLoader](https://github.com/zkxs/NeosModLoader).
