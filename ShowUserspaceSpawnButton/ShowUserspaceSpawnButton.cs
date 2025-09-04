@@ -34,6 +34,12 @@ namespace ShowUserspaceSpawnButton
                 }
                 return codes.AsEnumerable();
             }
+            [HarmonyPostfix]
+            [HarmonyPatch("OnAttach")]
+            static void OnAttachPostFixSync(Sync<InventoryBrowser.SpecialItemType> ____lastSpecialItemType)
+            {
+                ____lastSpecialItemType.Value = (InventoryBrowser.SpecialItemType)(-1);
+            }
         }
     }
 }
