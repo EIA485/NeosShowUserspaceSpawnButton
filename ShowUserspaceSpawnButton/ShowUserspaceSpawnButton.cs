@@ -1,21 +1,18 @@
-﻿using HarmonyLib;
-using NeosModLoader;
+﻿using BepInEx;
+using BepInEx.Logging;
+using BepInEx.NET.Common;
+using BepInExResoniteShim;
 using FrooxEngine;
-using System.Collections.Generic;
-using System;
-using System.Linq;
+using HarmonyLib;
 using System.Reflection.Emit;
-using System.Reflection;
 
 namespace ShowUserspaceSpawnButton
 {
-    public class ShowUserspaceSpawnButton : NeosMod
+    [ResonitePlugin(PluginMetadata.GUID, PluginMetadata.NAME, PluginMetadata.VERSION, PluginMetadata.AUTHORS, PluginMetadata.REPOSITORY_URL)]
+    [BepInDependency(BepInExResoniteShim.PluginMetadata.GUID)]
+    public class ShowUserspaceSpawnButton : BasePlugin
     {
-        public override string Name => "ShowUserspaceSpawnButton";
-        public override string Author => "eia485";
-        public override string Version => "1.0.0";
-        public override string Link => "https://github.com/EIA485/NeosShowUserspaceSpawnButton/";
-        public override void OnEngineInit() =>new Harmony("net.eia485.ShowUserspaceSpawnButton").PatchAll();
+        public override void Load() => HarmonyInstance.PatchAll();
 
         [HarmonyPatch(typeof(InventoryBrowser), "OnItemSelected")]
         class ShowUserspaceSpawnButtonPatch
@@ -25,7 +22,7 @@ namespace ShowUserspaceSpawnButton
                 var codes = instructions.ToList();
                 for (var i = 0; i < codes.Count; i++)
                 {
-                    if (codes[i].opcode == OpCodes.Ldloc_1 && codes[i + 1].opcode == OpCodes.Ldc_I4_5 && codes[i + 5].opcode == OpCodes.Brfalse_S) //comparing specialItemType to SpecialItemType.Facet
+                    if (codes[i].opcode == OpCodes.Ldloc_1 && codes[i + 1].opcode == OpCodes.Ldc_I4_5 && codes[i + 5].opcode == OpCodes.Brfalse) //comparing specialItemType to SpecialItemType.Facet
                     {
                         //checking if item is null
                         codes[i] = new CodeInstruction(OpCodes.Ldloc_0);//load item ui
