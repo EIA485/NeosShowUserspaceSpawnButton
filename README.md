@@ -1,8 +1,8 @@
 # ShowUserspaceSpawnButton
 
-A [BepisLoader](https://github.com/ResoniteModding/BepisLoader) mod for [Resonite](https://resonite.com/) that shows the userspace spawn button on any item regardless of if its a facet.
+A [BepisLoader](https://github.com/ResoniteModding/BepisLoader) mod for [Resonite](https://resonite.com/) that shows the userspace spawn button on any item regardless on if its a facet.
 
-remember that anything you spawn in your userspace can touch you anything you can. to list some things you can touch in userspace: desktop, file system. be careful!
+remember that anything you spawn in your userspace can touch anything you can. to list some things you can touch in userspace: desktop, file system. be careful!
 
 ## Installation
 1. Install [BepisLoader](https://github.com/ResoniteModding/BepisLoader).

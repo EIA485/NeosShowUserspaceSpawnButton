@@ -1,0 +1,42 @@
+# This file is used by the Thunderstore CLI to build and publish to Thunderstore. https://github.com/thunderstore-io/thunderstore-cli
+
+[config]
+schemaVersion = "0.0.1"
+
+[package]
+namespace = "eia485"
+name = "ShowUserspaceSpawnButton"
+versionNumber = "1.0.2"
+description = "shows the userspace spawn button on any item regardless on if its a facet. remember, anything you spawn in your userspace can touch everything you can." # max 250 characters
+websiteUrl = "http://github.com/EIA485/NeosShowUserspaceSpawnButton"
+containsNsfwContent = false
+
+[package.dependencies] 
+ResoniteModding-BepisLoader = "1.3.1"
+
+[build]
+icon = "icon.png"
+readme = "README.md"
+outdir = "build"
+
+# Copy the compiled DLL to the plugins folder in mod package
+[[build.copy]]
+source = "ShowUserspaceSpawnButton/bin/Release/net9.0/ShowUserspaceSpawnButton.dll"
+target = "plugins/"
+
+# Include PDB
+[[build.copy]]
+source = "ShowUserspaceSpawnButton/bin/Release/net9.0/ShowUserspaceSpawnButton.pdb"
+target = "plugins/"
+
+# include LICENSE file in mod package
+[[build.copy]]
+source = "license.txt"
+target = "/"
+
+[publish]
+repository = "https://thunderstore.io"
+communities = ["resonite"]
+
+[publish.categories]
+resonite = [ "mods" ] # https://thunderstore.io/api/experimental/community/resonite/category/
